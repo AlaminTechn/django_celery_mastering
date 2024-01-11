@@ -3,7 +3,7 @@
 <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=`, initial-scale=1.0">
-      <title>Home</title>
+      <title>Result</title>
 </head>
 <body>
 
@@ -17,14 +17,18 @@
 
       <hr/>
 
-      <h2> Using Celery Home Pages</h2>
+      <h2> Result Pages</h2>
 
       <div>
             {% if result  %}
 
-                 <p> {{ result.id }}</p> <br/>
+                <h5>Task ID : {{result.id }}</h5>
+                <h5>Task ID : {{result.task_id }}</h5> 
+                <h5>Task state : {{result.state }}</h5> 
+                <h6>Task status : {{result.status }}</h6> 
+                <h6>Task result : {{result.result }}</h6>
 
-                  <a href="{% url 'check_result' result.id %}" target="_blank" > Check Result </a>
+                 
 
       {% endif %}
       </div>
