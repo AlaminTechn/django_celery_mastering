@@ -8,15 +8,6 @@ from celery.result import AsyncResult
 
 # ---- assuming task with delay() method ---
 
-def index(request):
-      result = add.delay(10,20)
-      return render(request, 'myapp/home.html', {'result': result })
-
-
-def check_result(request, task_id):
-      result = AsyncResult(task_id)
-      return render(request, 'myapp/result.html', {'result': result})
-
 # def index(request):
 #       print("Result : ")
       
@@ -41,6 +32,20 @@ def check_result(request, task_id):
 #       print("Result 2 of sub : ", result2)
 
 #       return render(request, 'myapp/home.html')
+
+
+def index(request):
+      result = add.delay(10,20)
+      return render(request, 'myapp/home.html', {'result': result })
+
+
+def check_result(request, task_id):
+      result = AsyncResult(task_id)
+          # check others method 
+      print("Result ready : ", result.ready())
+      print("Result successful : ", result.successful())
+      print("Result failed : ", result.failed())
+      return render(request, 'myapp/result.html', {'result': result})
 
 
 def about(request):
